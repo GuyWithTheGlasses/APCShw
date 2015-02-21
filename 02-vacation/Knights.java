@@ -14,9 +14,14 @@ public class Knights{
     }
 
     public Knights(){
-	this(7,7);
+	this(9,9);
     }
 
+    /*
+      In setup we fill the border of the board with -1's and place the knight
+      in a random location in the 5x5.
+      Thus the knight has already made its 1st move and knightmoves = 1.
+    */
     private void setup(){
 	for(int i = 0 ; i < board.length ; i++){
 	    for(int j = 0 ; j < board[i].length ; j++){
@@ -34,6 +39,17 @@ public class Knights{
 
     /*-------------------------- Methods -------------------------------*/
 
+    public void print(){
+	for(int x = 0 ; x < board.length ; x++){
+	    for(int y = 0 ; y < board[x].length ; y++){
+	        int i = board[x][y];
+		String s = String.format("%d",i);
+		System.out.printf(s);
+	    }
+	    System.out.print("\n");
+	}
+    }
+
     public void knightsTour(){
 	
     }
@@ -41,8 +57,8 @@ public class Knights{
     /*---------------------------- Main --------------------------------*/
 
     public static void main(String[] args){
-	Knights k = new Knights();
-	System.out.println(k);
+	Knights k = new Knights(); //creates 5x5 board with 2x2 border
+        k.print();
     }
 
 }
