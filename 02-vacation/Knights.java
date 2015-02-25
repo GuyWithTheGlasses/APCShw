@@ -83,10 +83,10 @@ public class Knights{
 	if(board[x][y] != 0)
 	    return;
 	
-	//delay(100); //it's taking too long
+	delay(100); //it's taking too long
 	knightmoves++;
 	board[x][y] = knightmoves;
-        //print(); //I just wanna solve it
+        print(); //I just wanna solve it
 	
 	//Now we test this branch in all 8 directions.
 	knightsTour(x+2,y+1);
