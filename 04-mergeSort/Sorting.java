@@ -7,13 +7,22 @@ public class Sorting{
     private int listlength;
     private ArrayList<Integer> nums;
     private Random rnd = new Random();
+    private boolean finished;
 
     public Sorting(){
-	listlength = 10;
+	this(10);
+    }
+
+    public Sorting(int l){
+	listlength = l;
 	nums = new ArrayList<Integer>();
 	for(int i = 0 ; i < listlength ; i++){
 	    nums.add(rnd.nextInt(listlength));
 	}
+    }
+
+    public ArrayList<Integer> getList(){
+	return nums;
     }
 
     /*------------------------- Merge Method ---------------------------*/
@@ -58,7 +67,7 @@ public class Sorting{
 
     /*----------------------- MergeSort Method -------------------------*/
 
-    public void msort(ArrayList<Integer> L){
+    public ArrayList<Integer> msort(ArrayList<Integer> L){
 	if(L.size() > 1){
 	    ArrayList<Integer> a = new ArrayList<Integer>();
 	    ArrayList<Integer> b = new ArrayList<Integer>();
@@ -71,8 +80,7 @@ public class Sorting{
 	    r1 = msort(a);
 	    ArrayList<Integer> r2 = new ArrayList<Integer>();
 	    r2 = msort(b);
-	    
-	    return merge(a,b);
+	    return merge(r1,r2);
 	}
 	else{
 	    return L;
@@ -82,16 +90,24 @@ public class Sorting{
     /*----------------------------- Main -------------------------------*/
 
     public static void main(String[] args){
-	Sorting s = new Sorting();
 	/*
-	ArrayList<Integer> al1 = new ArrayList<Integer>();
-	ArrayList<Integer> al2 = new ArrayList<Integer>();
-	for(int i = 0 ; i < 5 ; i++){
-	    al1.add(i);
-	    al2.add(i+1);
-	}
-	System.out.println(s.merge(al1,al2));
+	  Time for 1000000 = 2.046 sec
+	  Time for 2000000 = 4.058 sec
+	  Time for 4000000 = 8.078 sec
+	  Time for 6000000 = 19.121 sec
+	  Time for 8000000 = 23.179 sec
+	  Time for 10000000 = 29.232 sec
+	  Time for 20000000 = 1 min 13.177 sec
+	  Appears to grow slightly above n^2 
+	  But initial times are much lower than bsort, ssort, isor
+	  Only starts taking long in the 10^8 range
 	*/
-	
+	int length = 20000000;
+	if(args.length > 0)
+	    length = Integer.parseInt(args[0]);
+	Sorting s = new Sorting(length);
+	s.msort(s.getList());
+	//System.out.println("Original List: "+"\n"+s.getList()+"\n");
+	//System.out.println("Sorted List: "+"\n"+s.msort(s.getList())+"\n");
     }
 }
