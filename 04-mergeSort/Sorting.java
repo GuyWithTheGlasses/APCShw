@@ -28,8 +28,8 @@ public class Sorting{
     /*------------------------- Merge Method ---------------------------*/
     /*
       Instead of using arraylist's remove method (because that requires 
-      extra looping) I decided to just keep counter variables to keep track
-      of what element of the arraylist we were up to.
+      extra looping) I decided to just use counter variables to keep track
+      of what element of the arraylist the program is up to.
       placeA and B are the current arraylist indexes 
       valueA and B are the values at indexes A and B in their respective arraylists
     */
@@ -68,6 +68,8 @@ public class Sorting{
     /*----------------------- MergeSort Method -------------------------*/
 
     public ArrayList<Integer> msort(ArrayList<Integer> L){
+	//Recursive case - when the list is greater than 1 you're lazy
+	//and hand it off to two other people to sort themselves. 
 	if(L.size() > 1){
 	    ArrayList<Integer> a = new ArrayList<Integer>();
 	    ArrayList<Integer> b = new ArrayList<Integer>();
@@ -76,12 +78,16 @@ public class Sorting{
 	    for(int j = L.size()/2 ; j < L.size() ; j++)
 		b.add(L.get(j));
 
+	    //After each half has been sorted, you can do the easy 
+	    //job of merging the two, no brainpower required.
 	    ArrayList<Integer> r1 = new ArrayList<Integer>();
 	    r1 = msort(a);
 	    ArrayList<Integer> r2 = new ArrayList<Integer>();
 	    r2 = msort(b);
 	    return merge(r1,r2);
 	}
+
+	//Hey look the list is 1 element long this'll be easy
 	else{
 	    return L;
 	}
