@@ -7,7 +7,6 @@ public class Sorting{
     private int listlength;
     private ArrayList<Integer> nums;
     private Random rnd = new Random();
-    private boolean finished;
 
     public Sorting(){
 	this(10);
@@ -108,7 +107,7 @@ public class Sorting{
 	  But initial times are much lower than bsort, ssort, isor
 	  Only starts taking long in the 10^8 range
 	*/
-	int length = 20000000;
+	int length = 2000000;
 	if(args.length > 0)
 	    length = Integer.parseInt(args[0]);
 	Sorting s = new Sorting(length);
