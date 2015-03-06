@@ -8,7 +8,7 @@ public class Knights{
     private int knightmoves;
     private int squares;
     private int[] startloc;
-    private Random rnd = new Random();
+    private Random rnd;
     private boolean solved;
 
     public Knights(){
@@ -17,6 +17,7 @@ public class Knights{
 
     public Knights(int x, int y){
 	board = new int[x][y];
+	rnd = new Random();
 	setup();
     }
 
@@ -83,10 +84,10 @@ public class Knights{
 	if(board[x][y] != 0)
 	    return;
 	
-	delay(100); //it's taking too long
+	//delay(100); //it's taking too long
 	knightmoves++;
 	board[x][y] = knightmoves;
-        print(); //I just wanna solve it
+        //print(); //I just wanna solve it
 	
 	//Now we test this branch in all 8 directions.
 	knightsTour(x+2,y+1);
