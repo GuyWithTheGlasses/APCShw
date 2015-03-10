@@ -52,11 +52,6 @@ public class Selection{
     */
 
     public int partition(int[] L, int start, int end){
-	int[] D = new int[L.length];
-	for(int i = 0 ; i < L.length ; i++){
-	    if(i < start || i > end)
-		D[i] = L[i];
-	}
 	int pivot = L[start];
 	int sublength = end - start;
 	/*
@@ -70,18 +65,16 @@ public class Selection{
 		//We loop from start+1 because L[start] is the pivot value,
 		//which we aren't interested in placing anywhere yet.
 		if(L[j] < pivot){
-		    D[start] = L[j];
+		    
 		    start++;
 		}
 		if(L[j] >= pivot){
-		    D[end] = L[j];
 		    end--;
 		}
 	    }
 	}
 	//When start is no longer less than end, that means there is only 
-	//one spot left in the array, which has to go to the pivot value.
-	D[start] = pivot;
+	//one spot left in the array, which has to go to the pivot value
         return start;
     }
 
@@ -95,22 +88,28 @@ public class Selection{
     public int select(int[] A, int k, int low, int high){
 	//Sort the first element of the array A and find what it is
 	int sortedIndex = partition(A, low, high);
+	System.out.println(Arrays.toString(numlist));
 	int sortedVal = A[sortedIndex];
-
+	System.out.println("index: "+sortedIndex+" value: "+sortedVal);
+	
 	//If that element happens to be the kth term of the array  when 
 	//sorted, that's your kth largest term
 	if(sortedIndex == k)
 	    return sortedVal;
-	
-	//Else try 1 of 2 paths: if the element's index is more than k,
-	//partition the upper portion of the array
-	else if(sortedIndex < k)
-	    return A[partition(A, low, sortedIndex - 1)];
-
-	//If the element's index is less than k, partition the lower portion
-	else
-	    return A[partition(A, sortedIndex + 1, high)];
+	    
+	//Else try 1 of 2 paths: if the element's index is less than k,
+	//partition the lower portion of the array
+	else if(sortedIndex < k){
+	    int sortedIndex1 = partition(A, low, sortedIndex - 1);
+	    return A[sortedIndex1];
+	}
+	//If the element's index is more than k, partition the upper portion
+	else{
+	    int sortedIndex2 = partition(A, sortedIndex + 1, high);
+	    return A[sortedIndex2];
+	}
     }
+
 
     /*------------------------------- Main -------------------------------*/
 
@@ -118,7 +117,8 @@ public class Selection{
 	Selection s = new Selection(10);
 	int[] nums = s.getNumlist();
 	System.out.println(Arrays.toString(nums));
-	int kth = s.select(nums, 4, 0, nums.length-1);
+	//System.out.println(s.partition(nums, 0, nums.length - 1));
+	int kth = s.select(nums, 3, 0, nums.length-1);
 	System.out.println(kth);
     }
 
