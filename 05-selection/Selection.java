@@ -41,8 +41,17 @@ public class Selection{
     }
 
     /*------------------------- Partition Method ------------------------*/
+    /*
+      Input: Array, start index, end index
+      Output: Int which is sorted location of the first item from the array
 
-    public int[] partition(int[] L, int start, int end){
+      Partition takes that first element and puts it into its sorted location
+      All elements before it are lower, all after it are higher
+      This version creates a new array because initially I coded it to return
+      the array after it got partitioned
+    */
+
+    public int partition(int[] L, int start, int end){
 	int[] D = new int[L.length];
 	for(int i = 0 ; i < L.length ; i++){
 	    if(i < start || i > end)
@@ -73,7 +82,7 @@ public class Selection{
 	//When start is no longer less than end, that means there is only 
 	//one spot left in the array, which has to go to the pivot value.
 	D[start] = pivot;
-	return D;
+        return start;
     }
 
     /*-------------------------- Select Method ---------------------------*/
@@ -83,17 +92,34 @@ public class Selection{
       First call is Select(A,k,0,A.length - 1) to search the full array
     */
 
-    public int Select(int[] A, int k, int low, int high){
+    public int select(int[] A, int k, int low, int high){
+	//Sort the first element of the array A and find what it is
+	int sortedIndex = partition(A, low, high);
+	int sortedVal = A[sortedIndex];
+
+	//If that element happens to be the kth term of the array  when 
+	//sorted, that's your kth largest term
+	if(sortedIndex == k)
+	    return sortedVal;
 	
+	//Else try 1 of 2 paths: if the element's index is more than k,
+	//partition the upper portion of the array
+	else if(sortedIndex < k)
+	    return A[partition(A, low, sortedIndex - 1)];
+
+	//If the element's index is less than k, partition the lower portion
+	else
+	    return A[partition(A, sortedIndex + 1, high)];
     }
 
     /*------------------------------- Main -------------------------------*/
 
     public static void main(String[] args){
 	Selection s = new Selection(10);
-	//System.out.println(Arrays.toString(s.getNumlist()));
-	//int[] result = s.partition(s.getNumlist(),0,s.getNumlist().length - 1);
-	//System.out.println(Arrays.toString(result));
+	int[] nums = s.getNumlist();
+	System.out.println(Arrays.toString(nums));
+	int kth = s.select(nums, 4, 0, nums.length-1);
+	System.out.println(kth);
     }
 
 }
