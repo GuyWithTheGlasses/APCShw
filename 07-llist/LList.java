@@ -1,6 +1,8 @@
 public class LList{
     private Node l = null;
 
+    /*------------------------------ Utilities ---------------------------------*/
+
     public void add(String s){
 	Node tmp = new Node(s);
 	tmp.setNext(l);
@@ -16,6 +18,8 @@ public class LList{
 	s = s + "null";
 	return s;
     }
+
+    /*------------------------------- Methods ---------------------------------*/
 		
     public String find(int n){
 	String ans = "Out of bounds";
@@ -23,6 +27,8 @@ public class LList{
 	//is too big or negative
 	Node tmp;
 	int count = 0;
+	//Keep moving through the llist while keeping a counter of which element
+	//we are up to; when we reach the proper element, we stop
 	for(tmp = l ; tmp != null ; tmp = tmp.getNext() ){
 	    if(n == count){
 		ans = tmp.getData();
