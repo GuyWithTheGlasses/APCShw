@@ -9,7 +9,9 @@ public class Driver{
 	    l1.add(""+rnd.nextInt(10));
 	}
 	System.out.println(l1);
-	l1.add(2, ""+13);
+	l1.add(0, ""+13);
+	System.out.println(l1);
+	l1.remove(0);
 	System.out.println(l1);
     }
 }

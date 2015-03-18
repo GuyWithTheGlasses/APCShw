@@ -12,17 +12,19 @@ public class LList{
 
     /*------------------------------ Utilities ---------------------------------*/
 
+    //Adds a Node with data s to the beginning of the list
     public void add(String s){
 	Node tmp = new Node(s);
 	tmp.setNext(l);
 	l = tmp;
+	dummy.setNext(l);
 	len++;
     }
 		
     public String toString(){
 	String s = "";
 	Node tmp;
-	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
+	for (tmp = dummy ; tmp != null ; tmp = tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
@@ -30,50 +32,37 @@ public class LList{
     }
 
     /*------------------------------- Methods ---------------------------------*/
-		
+
+    //Returns the element at location n
     public Node get(int n){
-	Node ans = null;
-	//The only way there is no element at index n is if the index
-	//is too big or negative
-	Node tmp;
-	int count = 0;
-	//Keep moving through the llist while keeping a counter of which element
-	//we are up to; when we reach the proper element, we stop
-	for(tmp = dummy ; count < len ; tmp = tmp.getNext() ){
-	    if(n == count){
-		ans = tmp;
-		break;
-            }
-	    else
-		count++;
-        }
-        return ans;
-    }
-    /*
-    public void add(int n, String s){
-	Node ins = new Node(s);
-	Node tmp;
-	int count = 0;
-	//Otherwise, we use the same algorithm from find to get to the 
-	//nth element of the llist. Then we switch the nodes. 
-	for(tmp = l ; tmp != null ; tmp = tmp.getNext() ){
-	    if(n == count+1){
-		ins.setNext(tmp.getNext());
-	        tmp.setNext(ins);
-		break;
-	    }
-	    else
-		count++;
+	Node tmp = dummy;
+	while(n > 0){
+	    tmp = tmp.getNext();
+	    n--;
 	}
+	return tmp;
     }
 
-    */
+    //Inserts a Node with data s at location n
     public void add(int n, String s){
 	Node ins = new Node(s);
 	Node tmp = get(n-1);
 	ins.setNext(tmp.getNext());
 	tmp.setNext(ins);
 	len++;
+    }
+
+    //Removes the element at location n and returns it
+    public Node remove(int n){
+	Node n1 = l;
+	while(n > 0){
+	    n1 = n1.getNext();
+	    n--;
+	}
+        Node n2 = n1.getNext();
+	Node n3 = n2.getNext();
+	n1.setNext(n3);
+	return n2;
     }
 
 }
