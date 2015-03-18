@@ -4,7 +4,7 @@ public class LList{
     private int len;
 
     public LList(){
-	dummy = new Node("START");
+	dummy = new Node(0);
 	l = null;
 	dummy.setNext(l);
 	len = 0;
@@ -12,9 +12,9 @@ public class LList{
 
     /*------------------------------ Utilities ---------------------------------*/
 
-    //Adds a Node with data s to the beginning of the list
-    public void add(String s){
-	Node tmp = new Node(s);
+    //Adds a Node with data i to the beginning of the list
+    public void add(int i){
+	Node tmp = new Node(i);
 	tmp.setNext(l);
 	l = tmp;
 	dummy.setNext(l);
@@ -34,35 +34,62 @@ public class LList{
     /*------------------------------- Methods ---------------------------------*/
 
     //Returns the element at location n
-    public Node get(int n){
+    public int get(int n){
+	int ans;
+	Node tmp = l;
+	while(n > 0){
+	    tmp = tmp.getNext();
+	    n--;
+	}
+	ans = tmp.getData();
+	return ans;
+    }
+
+    //Inserts a Node with data i at location n
+    public void add(int n, int i){
+	Node ins = new Node(i);
 	Node tmp = dummy;
 	while(n > 0){
 	    tmp = tmp.getNext();
 	    n--;
 	}
-	return tmp;
-    }
-
-    //Inserts a Node with data s at location n
-    public void add(int n, String s){
-	Node ins = new Node(s);
-	Node tmp = get(n-1);
 	ins.setNext(tmp.getNext());
 	tmp.setNext(ins);
 	len++;
     }
 
     //Removes the element at location n and returns it
-    public Node remove(int n){
-	Node n1 = l;
-	while(n > 0){
+    public int remove(int n){
+	if(n < 0 || n > len){
+	    //throw (NoSuchElementException e);
+	}
+	int ans;
+	Node n1 = dummy;
+        while(n > 0){
 	    n1 = n1.getNext();
 	    n--;
 	}
         Node n2 = n1.getNext();
 	Node n3 = n2.getNext();
+	ans = n2.getData();
 	n1.setNext(n3);
-	return n2;
+	return ans;
+    }
+
+    //Removes the first occurence of i in the list and returns true
+    //if successful, false if i is not in the list
+    public boolean removeFirstOccurence(int i){
+	Node n1 = l;
+	for(int j = 0 ; j < len - 1 ; j++){
+	    if(n1.getNext().getData() == i){
+		Node n3 = n1.getNext().getNext();
+		n1.setNext(n3);
+		return true;
+	    }
+	    else
+	        n1 = n1.getNext();
+	}
+	return false;		
     }
 
 }
