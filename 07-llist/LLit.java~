@@ -1,0 +1,11 @@
+public class LLit{
+    //Linked list iterator
+    private Node t;
+    
+    public LLit(Node n){
+	t = n;
+    }
+
+    
+    
+}

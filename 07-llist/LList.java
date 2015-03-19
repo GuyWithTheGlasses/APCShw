@@ -10,7 +10,7 @@ public class LList{
 	len = 0;
     }
 
-    /*------------------------------ Utilities ---------------------------------*/
+    /*----------------------------- Utilities ---------------------------------*/
 
     //Adds a Node with data i to the beginning of the list
     public void add(int i){
@@ -31,6 +31,11 @@ public class LList{
 	return s;
     }
 
+    public LLit getLLit(){
+	LLit i = new LLit(l.getNext());
+	return i;
+    }
+    
     /*------------------------------- Methods ---------------------------------*/
 
     //Returns the element at location n
@@ -80,10 +85,9 @@ public class LList{
     //if successful, false if i is not in the list
     public boolean removeFirstOccurence(int i){
 	Node n1 = l;
-	for(int j = 0 ; j < len - 1 ; j++){
-	    if(n1.getNext().getData() == i){
-		Node n3 = n1.getNext().getNext();
-		n1.setNext(n3);
+	for(int j = 0 ; j < len - 1; j++){
+	    if(n1.getData() == i){
+		remove(j);
 		return true;
 	    }
 	    else
@@ -92,5 +96,14 @@ public class LList{
 	return false;		
     }
 
+    //Very much slow, has to go from first element each time it does get
+    public int sumAll(){
+	int sum = 0;
+	for(int i = 0 ; i < len - 1; i++){
+	    sum = sum + get(i);
+	}
+	return sum;
+    }
+    
 }
     
