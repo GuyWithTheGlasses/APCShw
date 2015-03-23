@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class LList{
     private Node dummy;
     private Node l;
@@ -31,8 +34,8 @@ public class LList{
 	return s;
     }
 
-    public LLit getLLit(){
-	LLit i = new LLit(l.getNext());
+    public Iterator<E> iterator(){
+	LLit<E> i = new LLit<E>(l.getNext());
 	return i;
     }
     

@@ -18,13 +18,13 @@ public class Driver{
 	l.add("something");
 	l.add("else");
 
-	System.out.println(l);
+	//System.out.println(l);
 
 	for (int i=0;i < 5; i++){
 	    l2.add(i);
 	}
 
-	System.out.println(l2);
+	//System.out.println(l2);
 
 	Iterator<String> i = l.iterator();
 	//while (i.hasNext())
@@ -34,13 +34,13 @@ public class Driver{
 	//while (i2.hasNext())
 	//    System.out.println(i2.next());
 				
-	System.out.println("-----------------");
+	//System.out.println("-----------------");
 
 	// Java foreach or for in loop
 
-	for (String s : l){
-	    System.out.print(s+", ");
-	}
+	//for (String s : l){
+	//    System.out.print(s+", ");
+	//}
 	System.out.println();
 
 	/*
@@ -51,7 +51,7 @@ public class Driver{
 	*/
 
 	System.out.println(l);
-	i.next();
+	System.out.println("Should remove "+i.next());
 	i.remove();
 	System.out.println(l);
 				

@@ -9,7 +9,7 @@ public class LList<E> implements Iterable<E>{
     }
 
     public Iterator<E> iterator(){
-	LLit<E> i = new LLit<E>(l);
+	LLit<E> i = new LLit<E>(l.getNext());
 	return i;
     }
 		
