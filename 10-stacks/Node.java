@@ -2,8 +2,13 @@ public class Node<E>{
     Node<E> next;
     E data;
 
+    public Node(){
+	data = null;
+	next = null;
+    }
     public Node(E i){
 	data = i;
+	next = null;
     }
 
     public void setData(E i){

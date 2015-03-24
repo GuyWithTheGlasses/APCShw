@@ -1,10 +1,24 @@
 public class myStack<E>{
+
+    /*--------------- Variables, Constructors, Utilities -----------------*/
+    
     private Node<E> stacktop;
     
-    //n0 --> stacktop --> n1 --> n2
     public myStack(){
-	
+	stacktop = new Node<E>();
     }
+
+    public String toString(){
+	String s = "";
+	Node<E> tmp;
+	for(tmp = stacktop ; tmp.getNext() != null ; tmp=tmp.getNext()){
+	    s = s + tmp + " --> ";
+	}
+	s = s + "null";
+	return s;
+    }
+
+    /*-------------------------Important Methods ---------------------------*/
 
     public void push(E data){
 	Node<E> tmp = new Node<E>(data);
@@ -14,14 +28,22 @@ public class myStack<E>{
     }
 
     public E pop(){
-
+	Node<E> tmp = stacktop;
+	stacktop = tmp.getNext();
+	return tmp.getData();
     }
 
+    /*--------------------- Other Useful Methods --------------------------*/
+    
     public boolean empty(){
-
+	if(stacktop == null)
+	    return true;
+	else
+	    return false;
     }
 
     public E top(){
-
+        return stacktop.getData();
     }
+    
 }
