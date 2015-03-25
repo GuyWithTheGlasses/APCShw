@@ -22,7 +22,6 @@ public class myStack<E>{
 
     public void push(E data){
 	Node<E> tmp = new Node<E>(data);
-	stacktop.setNext(stacktop.getNext());
 	tmp.setNext(stacktop);
 	stacktop = tmp;
     }
@@ -36,10 +35,7 @@ public class myStack<E>{
     /*--------------------- Other Useful Methods --------------------------*/
     
     public boolean empty(){
-	if(stacktop == null)
-	    return true;
-	else
-	    return false;
+	return stacktop == null;
     }
 
     public E top(){

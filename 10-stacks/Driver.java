@@ -19,15 +19,15 @@ public class Driver{
 
 	/*----------------------- Array Stack -------------------------*/
 
-	AStack<Integer> astk = new AStack<Integer>();
-	System.out.println(astk);
+	//AStack<Integer> astk = new AStack<Integer>();
+	//System.out.println(astk);
 	for(int k = 0 ; k < 10 ; k++){
-	    astk.push(k);
+	    //astk.push(k);
 	}
-	System.out.println(astk);
+	//System.out.println(astk);
 	for(int l = 0 ; l < 5 ; l++){
-	    System.out.println("Removing "+astk.pop());
+	    //System.out.println("Removing "+astk.pop());
 	}
-	System.out.println(astk);
+	//System.out.println(astk);
     }
 }
