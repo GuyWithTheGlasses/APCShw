@@ -1,0 +1,4 @@
+public class myQueue<E>{
+
+    private Node<E> first;
+    private Node<E> last;
