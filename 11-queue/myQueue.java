@@ -13,7 +13,8 @@ public class myQueue<E>{
     public String toString(){
 	Node<E> tmp = first.getNext();
 	String s = "";
-	for( ; tmp != last ; tmp = tmp.getNext())
+	s = s + "First: " + first + "\n" + "Last: " + last + "\n";
+	for( ; tmp != last ; tmp = tmp.getNext() )
 	    s = s + tmp.getData() + " <-- ";
 	s = s + last.getData();
 	return s;
@@ -29,9 +30,9 @@ public class myQueue<E>{
 
     public E dequeue(){
 	if(!empty()){
-	    Node tmp = first.getNext();
+	    Node<E> tmp = first.getNext();
 	    first.setNext(tmp.getNext());
-	    return (E)tmp.getData();
+	    return tmp.getData();
 	}
 	else
 	    return null;
@@ -40,7 +41,7 @@ public class myQueue<E>{
     /*----------------------- Helpful Methods --------------------------*/
 
     public boolean empty(){
-	return first == last;
+	return last == null;
     }
 
     public E head(){
@@ -59,7 +60,7 @@ public class myQueue<E>{
 
 	for(int j = 0 ; j < 5 ; j++)
 	    System.out.println("Removing "+q.dequeue());
-	System.out.println(q);	
+	System.out.println(q);
     }
    
 }
