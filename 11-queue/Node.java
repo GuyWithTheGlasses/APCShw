@@ -30,5 +30,5 @@ public class Node<E>{
     public String toString(){
 	return ""+data;
     }
-    
+    //hey dudes
 }
