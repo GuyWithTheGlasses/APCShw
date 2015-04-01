@@ -1,0 +1,9 @@
+public class Frontier{
+
+    private int[][] coords;
+
+    public void add(int x, int y){
+
+    }
+    
+}
