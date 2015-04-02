@@ -1,18 +1,23 @@
 public class Frontier{
 
-    private myQueue<Integer> xcoords = new myQueue<Integer>();
-    private myQueue<Integer> ycoords = new myQueue<Integer>();
+    private myQueue<Point> f;
+    //f is for frontier #creativity
 
-    public void add(int x, int y){
-	xcoords.enqueue(x);
-	ycoords.enqueue(y);
+    public Frontier(){
+	f = new myQueue<Point>();
     }
 
-    public int[] remove(){
-	int[] a = new int[2];
-	a[0] = xcoords.dequeue();
-	a[1] = ycoords.dequeue();
-	return a;
+    public void add(Point p){
+	f.enqueue(p);
+    }
+
+    public Point remove(){
+        return f.dequeue();
+    }
+
+    public int[] getCoords(){
+	//returns x and y of the first element in the frontier
+	return f.top().getXY();
     }
    
 }

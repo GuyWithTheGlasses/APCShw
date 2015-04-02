@@ -5,6 +5,7 @@ public class Point{
     public Point(int x, int y){
 	xcor = x;
 	ycor = y;
+	prev = null;
     }
 
     public int getX(){
@@ -32,4 +33,14 @@ public class Point{
 	ycor = y;
     }
 
+    public int[] getPrev(){
+	int[] a = new int[2];
+	a[0] = prev.getX();
+	a[1] = prev.getY();
+	return a;
+    }
+    public void setPrev(Point p){
+	prev = p;
+    }
+	
 }
