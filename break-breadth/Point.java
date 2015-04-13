@@ -11,32 +11,14 @@ public class Point{
     public int getX(){
 	return xcor;
     }
-    public void setX(int x){
-	xcor = x;
-    }
 
     public int getY(){
 	return ycor;
-    }
-    public void setY(int y){
-	ycor = y;
-    }
-    
-    public int[] getXY(){
-        int[] a = new int[2];
-	a[0] = xcor;
-	a[1] = ycor;
-	return a;
-    }
-    public void setXY(int x, int y){
-	xcor = x;
-	ycor = y;
     }
 
     public Point getPrev(){
 	return prev;
     }
-
     public void setPrev(Point p){
 	prev = p;
     }

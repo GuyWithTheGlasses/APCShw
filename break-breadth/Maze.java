@@ -15,6 +15,9 @@ public class Maze {
     private char visited = '.';
     private boolean solved = false;
 
+    private Frontier f = new Frontier();
+    private Point current;
+
     /*--------------------- Constructors & Utilities ---------------------*/
 		
     public void delay(int n){
@@ -77,55 +80,47 @@ public class Maze {
     }
 
     public void BFsolve(int x, int y){
-	Frontier f = new Frontier();
 	Point start = new Point(x,y);
 	f.add(start);
 	System.out.println(f);
-	while(!solved){
+	while(!f.isEmpty()){
 	    //Grab the first point from the frontier
-	    Point current = f.remove();
+	    current = f.remove();
 	    int curx = current.getX();
 	    int cury = current.getY();
 
 	    //Check if it is the exit, if it is do path recovery
 	    if(board[curx][cury] == exit){
-		while(current != start){
-		    board[current.getX()][current.getY()] = me;
-		    current = current.getPrev();
+	        Point p = current.getPrev();
+		while(p != null){
+		    board[p.getX()][p.getY()] = me;
+		    p = p.getPrev();
 		}
 		System.out.println(this);
-		solved = true;
+		break;
 	    }
-	    //If not, continue and mark it 
-	    board[curx][cury] = visited;
-	    System.out.println(this);
 
-	    //Add the surrounding elements to the frontier  only if they
-	    //are valid points on the path
-	    if(board[curx+1][cury] == path){
-		Point p1 = new Point(curx+1,cury);
-		p1.setPrev(current);
-		f.add(p1);
-		//System.out.println(f);
-	    }
-	    if(board[curx-1][cury] == path){
-		Point p2 = new Point(curx-1,cury);
-		p2.setPrev(current);
-		f.add(p2);
-		//System.out.println(f);
-	    }
-	    if(board[curx][cury+1] == path){
-		Point p3 = new Point(curx,cury+1);
-		p3.setPrev(current);
-		f.add(p3);
-		//System.out.println(f);
-	    }
-	    if(board[curx][cury-1] == path){
-		Point p4 = new Point(curx,cury-1);
-		p4.setPrev(current);
-		f.add(p4);
-		//System.out.println(f);
-	    }
+	    //Else, mark your territory
+	    board[curx][cury] = visited;
+	    
+	    //Then add the surrounding elements to the frontier only if
+	    //they are valid points on the path
+	    addToFront(curx+1,cury);
+	    addToFront(curx-1,cury);
+	    addToFront(curx,cury+1);
+	    addToFront(curx,cury-1);
+	    delay(10);
+	    System.out.println(this);
+	}
+    }
+
+    //Adds to the frontier only if the point is valid
+    private void addToFront(int tx, int ty){
+        Point tmp = null;
+	if(board[tx][ty] == path || board[tx][ty] == exit){
+	    tmp = new Point(tx,ty);
+	    tmp.setPrev(current);
+	    f.add(tmp);   
 	}
     }
 
