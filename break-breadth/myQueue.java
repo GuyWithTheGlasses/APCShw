@@ -13,10 +13,10 @@ public class myQueue<E>{
     public String toString(){
 	Node<E> tmp = first.getNext();
 	String s = "";
-	s = s + "First: " + first + "\n" + "Last: " + last + "\n";
+	s = s + "Last: " + last + "\n";
 	for( ; tmp != last ; tmp = tmp.getNext() )
 	    s = s + tmp.getData() + " <-- ";
-	s = s + last.getData();
+	s = s + last.getData() + "\n";
 	return s;
     }
 
@@ -53,14 +53,9 @@ public class myQueue<E>{
     public static void main(String[] args){
 	myQueue<Integer> q = new myQueue<Integer>();
 	System.out.println(q);
-
-	for(int i = 0 ; i < 10 ; i++)
-	    q.enqueue(i);
+	q.enqueue(1);
 	System.out.println(q);
-
-	for(int j = 0 ; j < 5 ; j++)
-	    System.out.println("Removing "+q.dequeue());
-	System.out.println(q);
+	System.out.println("Removing "+q.dequeue());
     }
    
 }

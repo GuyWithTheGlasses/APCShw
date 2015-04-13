@@ -33,12 +33,10 @@ public class Point{
 	ycor = y;
     }
 
-    public int[] getPrev(){
-	int[] a = new int[2];
-	a[0] = prev.getX();
-	a[1] = prev.getY();
-	return a;
+    public Point getPrev(){
+	return prev;
     }
+
     public void setPrev(Point p){
 	prev = p;
     }
