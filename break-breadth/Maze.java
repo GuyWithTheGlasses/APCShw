@@ -109,7 +109,7 @@ public class Maze {
 	    addToFront(curx-1,cury);
 	    addToFront(curx,cury+1);
 	    addToFront(curx,cury-1);
-	    delay(10);
+	    delay(50);
 	    System.out.println(this);
 	}
     }
