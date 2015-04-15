@@ -2,12 +2,8 @@ import java.util.*;
 
 public class Frontier{
 
-    public LinkedList<Point> f;
+    public LinkedList<Point> f = new LinkedList<Point>();
     //f is for frontier creative I know
-
-    public Frontier(){
-	f = new LinkedList<Point>();
-    }
 
     public void add(Point p){
 	//adds to back of queue

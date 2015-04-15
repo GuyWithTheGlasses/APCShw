@@ -15,7 +15,7 @@ public class Maze {
     private char visited = '.';
     private boolean solved = false;
 
-    private Frontier f = new Frontier();
+    private Frontier f;
     private Point current;
 
     /*--------------------- Constructors & Utilities ---------------------*/
@@ -80,6 +80,8 @@ public class Maze {
     }
 
     public void BFsolve(int x, int y){
+	f = new Frontier();
+	//f = new StackFront();
 	Point start = new Point(x,y);
 	f.add(start);
 	System.out.println(f);
@@ -95,6 +97,8 @@ public class Maze {
 		while(p != null){
 		    board[p.getX()][p.getY()] = me;
 		    p = p.getPrev();
+		    System.out.println(this);
+		    delay(40);
 		}
 		System.out.println(this);
 		break;
@@ -109,7 +113,7 @@ public class Maze {
 	    addToFront(curx-1,cury);
 	    addToFront(curx,cury+1);
 	    addToFront(curx,cury-1);
-	    delay(50);
+	    delay(40);
 	    System.out.println(this);
 	}
     }
