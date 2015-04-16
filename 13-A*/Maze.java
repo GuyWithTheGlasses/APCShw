@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Maze {
-    /*--------------------------- Variables ------------------------*/
+    /*--------------------------- Variables ----------------------------*/
     
     private char[][] board;
     private int maxX;
@@ -53,18 +53,19 @@ public class Maze {
 	}
 	return s;
     }
-
+    
     /*---------------------- BEST-first Search ------------------------*/
 
-    
+    public void bestSolve(int x, int y){
+	
+    }
 
     /*---------------------------- Main -------------------------------*/
 		
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-	//m.DFsolve(1,1);
-	//m.BFsolve(1,1);
+
 	System.out.println(m);
     }
     

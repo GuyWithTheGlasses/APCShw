@@ -8,11 +8,15 @@ public class Point{
 	ycor = y;
 	prev = null;
     }
+    public Point(int x, int y, int pri){
+	xcor = x;
+	ycor = y;
+	priority = pri;
+    }
 
     public int getX(){
 	return xcor;
     }
-
     public int getY(){
 	return ycor;
     }
