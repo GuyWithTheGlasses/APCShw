@@ -9,7 +9,7 @@ public class PFrontier{
     public void add(Point p){
 	int i = 0;
 	while(i < f.size()){
-	    if(p.getPri() > f.get(i).getPri()){
+	    if(p.getPri() < f.get(i).getPri()){
 		f.add(i,p);
 		return;
 	    }
@@ -34,7 +34,7 @@ public class PFrontier{
 	return s;	    
     }
 
-    /*
+    
     public static void main(String[] args){
 	PFrontier pf = new PFrontier();
 	Point p1 = new Point(1,1);
@@ -54,13 +54,13 @@ public class PFrontier{
 	pf.add(p4);
 	System.out.println(pf);
 	Point p5 = new Point(5,5);
-	p5.setPri(5);
+	p5.setPri(0);
 	pf.add(p5);
 	System.out.println(pf);
 	System.out.println(pf.remove());
 	System.out.println(pf);
     }
-    */
+    
     
 }
 

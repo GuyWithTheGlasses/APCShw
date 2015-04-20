@@ -77,6 +77,8 @@ public class Maze {
 		while(p != null){
 		    board[p.getX()][p.getY()] = me;
 		    p = p.getPrev();
+		    delay(20);
+		    System.out.println(this);
 		}
 		System.out.println(this);
 		break;
@@ -129,8 +131,9 @@ public class Maze {
     }
 
     private int manhattanPri(Point m){
-	Point exit = findExit();
-	return (exit.getX() - m.getX()) + (exit.getY() - m.getY());
+	Point dest = findExit();
+	return Math.abs((dest.getX() - m.getX())) +
+	    Math.abs((dest.getY() - m.getY()));
     }
 
     private int astarPri(Point a){
