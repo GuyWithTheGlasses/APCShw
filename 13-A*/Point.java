@@ -2,6 +2,7 @@ public class Point{
     private int xcor, ycor;
     private Point prev;
     private int priority;
+    private int steps;
 
     public Point(int x, int y){
 	xcor = x;
@@ -34,5 +35,12 @@ public class Point{
     public void setPri(int p){
 	priority = p;
     }
-	
+    
+    public int getSteps(){
+	return steps;
+    }
+    public void setSteps(int s){
+	steps = s;
+    }
+
 }
