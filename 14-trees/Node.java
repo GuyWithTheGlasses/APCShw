@@ -1,9 +1,9 @@
-public class Node<E>{
+public class Node{
 
-    private E data;
-    private Node<E> left, right;
+    private int data;
+    private Node left, right;
 
-    public Node(E i){
+    public Node(int i){
 	data = i;
 	left = null;
 	right = null;
@@ -12,21 +12,21 @@ public class Node<E>{
     public Node getLeft(){
 	return left;
     }
-    public void setLeft(Node<E> l){
+    public void setLeft(Node l){
 	left = l;
     }
 
     public Node getRight(){
 	return right;
     }
-    public void setRight(Node<E> r){
+    public void setRight(Node r){
         right = r;
     }
 
-    public E getData(){
+    public int getData(){
 	return data;
     }
-    public void setData(E d){
+    public void setData(int d){
 	data = d;
     }
     
