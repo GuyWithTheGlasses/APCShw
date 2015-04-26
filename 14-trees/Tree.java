@@ -55,6 +55,7 @@ public class Tree{
 	Node tmp = groot;
 	while(tmp != null){
 	    int cur = tmp.getData();
+	    System.out.println(tmp);
 	    if(i == cur)
 		return tmp;
 	    else if(i > cur)
@@ -62,14 +63,15 @@ public class Tree{
 	    else
 		tmp = tmp.getLeft();
 	}
-	return tmp;		    
+	return null;		    
     }
 
     public static void main(String[] args){
 	Tree t = new Tree();
-	for(int i = 5 ; i > 0; i--)
+	for(int i = 0 ; i < 10; i--)
 	    t.insert(t.getRoot(),i);
-	t.search(t.getRoot(),4);
+	t.insert(t.getRoot(),11);
+	t.search(t.getRoot(),11);
     }
     
 }
