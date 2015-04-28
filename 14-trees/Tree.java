@@ -8,10 +8,6 @@ public class Tree{
 	root = null;
     }
 
-    public Node getRoot(){
-	return root;
-    }
-
     /*--------------------- Insert and Search Methods ------------------------*/
     /*
     public void insert(Node groot, int i){
@@ -47,12 +43,12 @@ public class Tree{
     }
     */
 
-    public void insert(Node r, int i){
+    public void insert(int i){
 	Node n = new Node(i);
 	Node t2 = null;
-	Node t = r;
-	if (r == null){
-	    r = n;
+	Node t = root;
+	if (root == null){
+	    root = n;
 	    return;
 	}						
 	while (t!=null){
@@ -95,9 +91,9 @@ public class Tree{
 	if(groot == null)
 	    return s;
 	else{
-	    s = s + groot.getData();
-	    s = s + traverse(groot.getLeft());
-	    s = s + traverse(groot.getRight());
+	    s = s + traverse(groot.getLeft())+" ";
+	    s = s + groot.getData()+" ";
+	    s = s + traverse(groot.getRight())+" ";
 	    return s;
 	}	
     }
@@ -110,8 +106,9 @@ public class Tree{
     
     public static void main(String[] args){
 	Tree t = new Tree();
-	for(int i = 0 ; i < 10; i++)
-	    t.insert(t.getRoot(),i);
+	Random rnd = new Random();
+	for(int i = 0 ; i < 20; i++)
+	    t.insert(rnd.nextInt(20));
 	System.out.println(t.search(5));
 	System.out.println(t);
     }
