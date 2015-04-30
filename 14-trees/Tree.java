@@ -92,17 +92,17 @@ public class Tree{
        - copy that node's data into the space left by the deleted node
        - set the previous node to null
      */
-    public void delete(){
+    public void delete(int i){
 	Node i = new Node(i);
 	Node t2 = null;
 	Node t = root;
 	while(t != null){
-	    t2 = t;
-	    if (t.getData() == i)
+	    if(t.getData() == i)
 	        break;
-	    else if (t.getData() < i)
+	    t2 = t;
+	    else if(t.getData() < i)
 		t = t.getRight();
-	    else if (t.getData() > i)
+	    else if(t.getData() > i)
 		t = t.getLeft();
 	    else
 		return;
@@ -112,7 +112,12 @@ public class Tree{
 	    t2.setRight(t.getRight());
 	else if(t.getRight() == null)
 	    t2.setLeft(t.getLeft());
-	//More is needed, not done yet!
+	else{
+	    t = t2.getLeft();
+	    while(t.getRight() != null)
+		t = t.getRight();
+	    
+	    
 
 	/*------------------------------ Main --------------------------------*/
     
