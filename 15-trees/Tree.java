@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Tree{    
     private Node root;
 
@@ -49,21 +51,30 @@ public class Tree{
     }
 
     public int maxValue(Node t){
+	//Largest value in tree
+	if(t == null)
+	    return Integer.MIN_VALUE;
+	else{
+	    int maxr = maxVal(t.getRight());
+	    int maxl = maxVal(t.getLeft());
+	    return Math.max(maxr, Math.max(maxl, t.getValue()) );
+	}
+    }
+
+    public int height(Node t){
+	//Longest root to leaf path
 	if(t == null)
 	    return 0;
 	else
-	    return maxValHelper(t, t.getData());
+	    return 1 + Math.max(height(t.getLeft()), height(t.getRight()));
     }
-    public int maxValHelper(Node t, int maxSoFar){
-	if(t == null)
-	    return 0;
-	int cur = t.getData();
-	else if(cur > maxSoFar){
-	    return maxValHelper(t.getLeft(), cur);
-	    return maxValHelper(t.getRight(), cur);
-	}
-	else{
-	    return 
-	    
+
+    public int diameter(Node t){
+	//Longest leaf to leaf path
+	int plen1 = height(t.getLeft()) + height(t.getRight()) + 2;
+	int plen2 = diameter(t.getLeft());
+	int plen3 = diameter(t.getRight());
+	return Math.max(plen1, Math.max(plen2, plen3));
     }
+    
 }
